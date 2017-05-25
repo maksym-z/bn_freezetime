@@ -6,6 +6,10 @@ bn_freezetime_fnc_local_markers = compile preprocessFileLineNumbers "SerP\bn_fre
 
 bn_leaders_array = [];
 
+{
+	_x setVariable ["SerP_isPlayer",(isPlayer _x)];
+} forEach playableUnits;
+
 bn_fnc_establish_side_leaders = {
 	bn_leaders_array = [];
 	if (isNil 'bn_freezetime_side_ready_array') then {
