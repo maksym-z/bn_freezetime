@@ -29,8 +29,6 @@ waitUntil{player==player};
 setViewDistance SerP_viewDistance;
 if (count(playableUnits)==0||!alive(player)) exitWith {};//костыль для запуска в синглплеерном редакторе
 
-[] call bn_freezetime_fnc_local_markers;
-
 // select the first matching condition
 {
 	_x params ["_include_condition","_can_move_condition",["_init_code",""],["_cleanup_code",""]];
@@ -40,6 +38,8 @@ if (count(playableUnits)==0||!alive(player)) exitWith {};//костыль для
 		bn_freezetime_cleanup_code = compile _cleanup_code;
 	};
 } forEach bn_freezetime_zone_array;
+
+[] call bn_freezetime_fnc_local_markers;
 
 
 // BRIEFING ENDS HERE

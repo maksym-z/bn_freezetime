@@ -3,23 +3,25 @@ private _group_references = "";
 {
 	private _veh = _x;
 	private _vid = _forEachIndex;
-	{
-		if (_veh isKindOf _x) exitWith {
-			private _displayName = getText (configFile >> "cfgVehicles" >> (typeOf _veh) >> "displayName");
-			//params ['_mrkname', '_cx', '_cy', '_size', '_icon', '_color', '_text',['_shape','icon'],['_condition',{true}],['_replay',false]];
-			private _veh_marker = [
-				"bn_veh_" + (str _vid), 
-				getPos _veh select 0,
-				getPos _veh select 1,
-				1,
-				"hd_dot",
-				"ColorWhite",
-				_displayName
-			] call tu_decoration_fnc_create_marker; //todo: check spelling
-			_vehicle_references = _vehicle_references + format ["<marker name = '%1'>%2</marker><br />",_veh_marker,_displayName];
-			bn_freezetime_trash_markers pushBack _veh_marker;
-		};
-	} forEach bn_freezetime_vehicle_classes_to_show;
+	if ([_veh] call bn_freezetime_can_move_condition) then {
+		{
+			if (_veh isKindOf _x) exitWith {
+				private _displayName = getText (configFile >> "cfgVehicles" >> (typeOf _veh) >> "displayName");
+				//params ['_mrkname', '_cx', '_cy', '_size', '_icon', '_color', '_text',['_shape','icon'],['_condition',{true}],['_replay',false]];
+				private _veh_marker = [
+					"bn_veh_" + (str _vid), 
+					getPos _veh select 0,
+					getPos _veh select 1,
+					1,
+					"hd_dot",
+					"ColorWhite",
+					_displayName
+				] call tu_decoration_fnc_create_marker; //todo: check spelling
+				_vehicle_references = _vehicle_references + format ["<marker name = '%1'>%2</marker><br />",_veh_marker,_displayName];
+				bn_freezetime_trash_markers pushBack _veh_marker;
+			};
+		} forEach bn_freezetime_vehicle_classes_to_show;
+	};
 } forEach vehicles;
 // todo: add vehicles tab
 {
