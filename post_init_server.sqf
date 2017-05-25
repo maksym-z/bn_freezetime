@@ -1,7 +1,7 @@
 //TODO: timer and stuff
 SerP_warBegins = 0;
 publicVariable "SerP_warBegins";
-
+[] call bn_fnc_establish_side_leaders;
 bn_freezetime_countdown_minutes_left = switch (SerP_briefingMode) do	{
 	case 0:	{3};
 	case 1:	{7};
@@ -26,5 +26,5 @@ waitUntil {
 	bn_freezetime_countdown_minutes_left <= 0
 };
 
-[] call "bn_freezetime_over";
+[] call bn_freezetime_over;
 

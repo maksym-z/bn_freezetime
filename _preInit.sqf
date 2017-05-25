@@ -73,7 +73,15 @@ bn_freezetime_fnc_update_timer = {
 	diag_log _display;
 	diag_log (str _display);
 	if !(isNull _display) then {
-		(_display displayCtrl 411001) ctrlSetText (format ["До старта %1 %2.",bn_freezetime_countdown_minutes_left,_formatMinutes]);
+		if (bn_freezetime_countdown_minutes_left > 0) then {
+			if (bn_freezetime_countdown_minutes_left == 1) then {
+				(_display displayCtrl 411001) ctrlSetText "До старта меньше минуты.";
+			} else {
+				(_display displayCtrl 411001) ctrlSetText (format ["До старта %1 %2.",bn_freezetime_countdown_minutes_left,_formatMinutes]);
+			};
+		} else {
+			(_display displayCtrl 411001) ctrlSetText "Сейчас начнётся!";
+		};
 	};
 };
 

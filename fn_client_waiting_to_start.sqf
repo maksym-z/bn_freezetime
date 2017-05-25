@@ -14,9 +14,9 @@ waitUntil {
 	if !([] call bn_freezetime_can_move_condition) then {
 		bn_freezetime_warnings = bn_freezetime_warnings + 1;
 		["SerP_alarm",["", localize "STR_SerP_outOfZone"]] call BIS_fnc_showNotification;
-		(vehicle player) setVelocity [0,0,0];
+		(vehicle player) setVelocity ((velocity vehicle player) vectorMultiply -1);
 		sleep 1;
-		if (bn_freezetime_warnings > 5) then {
+		if (bn_freezetime_warnings > 3) then {
 			player setPos bn_freezetime_last_legal_position;
 			bn_freezetime_warnings = 0;
 		};

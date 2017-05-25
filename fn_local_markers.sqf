@@ -44,7 +44,7 @@ private _group_references = "";
 		] call tu_decoration_fnc_create_marker; //todo: check spelling
 		private _units_text = "";
 		{
-			_units_text = _units_text + format ["  %1 (%2)<br />", name _x, roleDescription _x];
+			_units_text = _units_text + format ["  %2 %1<br />", name _x, roleDescription _x];
 		} forEach (units _x);
 		_units_text = _units_text + "<br />";
 		_group_references = _group_references + format ["<marker name = '%1'>%2</marker><br />%3",_group_marker,_groupName, _units_text];
