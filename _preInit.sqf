@@ -127,6 +127,7 @@ bn_freezetime_over = {
 			deleteVehicle _x;
 		};
 	} forEach playableUnits;
+	["Начали!"] call SerP_msg;
 };
 
 // TODO: stick this all into a function

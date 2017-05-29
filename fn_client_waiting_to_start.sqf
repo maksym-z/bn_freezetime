@@ -33,6 +33,5 @@ waitUntil {
 
 player removeEventHandler ["firedMan", bn_freezetime_firedEH];
 cutText ["","PLAIN"];
-["Начали!"] call SerP_msg;
 [] call bn_freezetime_cleanup_code;
 {deleteMarkerLocal _x} forEach bn_freezetime_trash_markers;
